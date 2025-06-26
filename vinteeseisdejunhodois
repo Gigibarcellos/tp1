@@ -1,0 +1,30 @@
+<html>
+<script>
+    var nomes = []
+    var idades = []
+    var votos = []
+    var quantidade = 3
+    alert("Digite o nome e idade de "+quantidade+" pessoas.")
+
+    for(i = 1; i <= quantidade; i++) {
+        var respostanome = prompt("Digite o nome da "+i+"° pessoa:")
+        nomes.push(respostanome)
+        var respostaidade = prompt("Digite a idade da "+i+"° pessoa:")
+        idades.push(respostaidade)
+    }
+
+    for(i = 1; i <= quantidade; i++) {
+        if (idades[i-1] < 16) {
+            votos.push("Não pode votar.")
+        } 
+        else if (idades[i-1] >= 18 && idades[i-1] <= 69) {
+            votos.push("Voto obrigatório.")
+        } 
+        else {
+            votos.push("Voto facultativo.")
+        }
+        
+        alert(i+"° pessoa:\nNome: "+ nomes[i-1] +" \nIdade: "+ idades[i-1] + "\nVoto: "+ votos[i-1])
+    }
+</script>
+</html>
