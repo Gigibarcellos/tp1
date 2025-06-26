@@ -1,3 +1,4 @@
+<html>
 <script>
     var a = []
     var quantidade = 10
@@ -9,3 +10,4 @@
     }
     alert("Esses foram seus nomes: "+ a.join(", ") )
 </script>
+</html>
