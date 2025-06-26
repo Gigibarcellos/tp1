@@ -1,0 +1,11 @@
+<script>
+    var a = []
+    var quantidade = 10
+    alert("Digite "+quantidade+" nomes.")
+
+    for(i = 1; i <= quantidade; i++) {
+        var resposta = prompt("Digite o "+i+"° nome:")
+        a.push(resposta)
+    }
+    alert("Esses foram seus nomes: "+ a.join(", ") )
+</script>
