@@ -1,0 +1,27 @@
+<html>
+<!DOCTYPE html>
+<html>
+<head><title>Regra de Três</title></head>
+<body>
+  <h3>Calculadora de Regra de Três</h3>
+  A: <input id="a" type="number"> 
+  B: <input id="b" type="number"> 
+  C: <input id="c" type="number">
+  <button onclick="calc()">Calcular</button>
+  <p id="res"></p>
+
+  <script>
+    function calc() {
+      const a = +document.getElementById('a').value;
+      const b = +document.getElementById('b').value;
+      const c = +document.getElementById('c').value;
+      const res = document.getElementById('res');
+
+      if (a === 0) return res.textContent = "A não pode ser zero.";
+      if (!a || !b || !c) return res.textContent = "Preencha todos os valores.";
+
+      res.textContent = "X = " + ((b * c) / a).toFixed(2);
+    }
+  </script>
+</body>
+</html>
