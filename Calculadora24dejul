@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora HTML</title>
+</head>
+<body>
+<h1>Calculadora</h1>
+    <h2> Digite 2 números e escolha a operação desejada</h2> <br>
+
+        <input style="font-size:30px;" type="number" id="a"> <br>
+        <input style="font-size:30px;" type="number" id="b">
+        <br>
+        <input style="font-size:30px;" type="button" value="+" onclick="soma()"> 
+        <input style="font-size:30px;" type="button" value="-" onclick="sub()"> 
+        <input style="font-size:30px;" type="button" value="×" onclick="mult()"> 
+        <input style="font-size:30px;" type="button" value="÷" onclick="div()"> 
+        <input style="font-size:30px;" type="button" value="^" onclick="pot()"> 
+        <input style="font-size:30px;" type="button" value="√" onclick="raiz()"> 
+        <button style="font-size:30px;" onclick="limpa()">Limpar Calculadora</button> <br>
+        <p id="resultado" style="font-size:30px;"></p>
+
+    <script>
+        function soma() {
+            var A = parseFloat(a.value);
+            var B = parseFloat(b.value);
+
+            var x = A + B
+
+           resultado.innerHTML =  A + " + " + B + " = " + x;
+        }
+        function sub(){ 
+            var A = parseFloat(a.value);
+            var B = parseFloat(b.value);
+
+            var x = A - B
+
+            resultado.innerHTML =  A + " - " + B + " = " + x;
+        }
+        function mult(){
+            var A = parseFloat(a.value);
+            var B = parseFloat(b.value);
+
+            var x = A * B
+
+            resultado.innerHTML =  A + " * " + B + " = " + x;
+        }
+        function pot(){
+            var A = parseFloat(a.value);
+            var B = parseFloat(b.value);
+
+            var x = A ** B
+
+            resultado.innerHTML =  A + " ^ " + B + " = " + x;
+        }
+        function raiz(){
+            var A = parseFloat(a.value);
+            var B = parseFloat(b.value);
+
+            var x = A ** (1/B)
+
+            resultado.innerHTML =  B + " √ " + A + " = " + x;
+        }
+        function div(){
+            var A = parseFloat(a.value);
+            var B = parseFloat(b.value);
+            if (B == 0) {
+            resultado.innerHTML = "Erro: divisão por zero!";
+            } else {
+                var x = A / B;
+            resultado.innerHTML =  A + " ÷ " + B + " = " + x;
+        }
+        
+    }
+    function limpa(){
+            a.value = ""
+            b.value = ""
+            resultado.innerText = ""
+        }
+    
+    </script>
+
+</body>
+</html>
