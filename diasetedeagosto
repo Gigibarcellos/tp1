@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora em JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        #historico {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora</h1>
+
+    <div>
+        <input id="valor1" type="number" placeholder="Valor 1" />
+        <input id="valor2" type="number" placeholder="Valor 2" />
+    </div>
+
+    <div>
+        <button onclick="calcular('+')">+</button>
+        <button onclick="calcular('-')">-</button>
+        <button onclick="calcular('*')">x</button>
+        <button onclick="calcular('/')">/</button>
+    </div>
+
+    <div id="resultado"></div>
+
+    <div id="historico">
+        <h2>Histórico de Operações</h2>
+        <ul id="lista-historico"></ul>
+    </div>
+
+    <script>
+
+        const historico = [];
+        function calcular(operacao) {
+            const valor1 = parseFloat(document.getElementById('valor1').value);
+            const valor2 = parseFloat(document.getElementById('valor2').value);
+
+            let resultado;
+            switch (operacao) {
+                case '+':
+                    resultado = valor1 + valor2;
+                    break;
+                case '-':
+                    resultado = valor1 - valor2;
+                    break;
+                case '*':
+                    resultado = valor1 * valor2;
+                    break;
+                case '/':
+                    if (valor2 === 0) {
+                        resultado = 'Erro: divisão por zero';
+                    } else {
+                        resultado = valor1 / valor2;
+                    }
+                    break;
+            }
+            const operacaoObj = {
+                operando1: valor1,
+                operando2: valor2,
+                operacao: operacao,
+                resultado: resultado
+            };
+            historico.push(operacaoObj);
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.textContent = `${valor1} ${operacao} ${valor2} = ${resultado}`;
+            atualizarHistorico();
+        }
+        function atualizarHistorico() {
+            const listaHistorico = document.getElementById('lista-historico');
+            listaHistorico.innerHTML = '';  
+
+            historico.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.operando1} ${item.operacao} ${item.operando2} = ${item.resultado}`;
+                listaHistorico.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>
