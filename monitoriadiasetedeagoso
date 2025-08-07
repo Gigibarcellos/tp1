@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Aluno" id="nome">
+    <input type="number" placeholder="Idade" id="idade"> <br>
+    <input type="number" placeholder="Nota 1" id="nota1"> 
+    <input type="number" placeholder="Nota 2" id="nota2"> <br>
+    <input type="number" placeholder="Nota 3" id="nota3"> 
+    <input type="number" placeholder="Nota 4" id="nota4"> <br>
+    <input type="button" id="botao" value="Calcular Média" onclick="calcularMedia()">
+    <div id="historico">
+        <h2>Histórico de Dados</h2>
+        <ul id="listaDados"></ul>
+    </div>
+    
+    <script>
+        var contador = 1;
+
+        function mostrarDados(aluno) {
+            const lista = document.getElementById("listaDados");
+            const item = document.createElement("li");
+            item.textContent = `Aluno ${contador}: ${aluno.nome}, Idade: ${aluno.idade}, Média: ${aluno.media.toFixed(2)}`;
+            lista.appendChild(item);
+            contador++;
+        }
+
+        function calcularMedia() {
+            let aluno = {};
+            aluno.nome = document.getElementById("nome").value;  
+            aluno.idade = document.getElementById("idade").value;
+            let notas = [
+                parseFloat(document.getElementById("nota1").value),
+                parseFloat(document.getElementById("nota2").value),
+                parseFloat(document.getElementById("nota3").value),
+                parseFloat(document.getElementById("nota4").value)
+            ];
+
+            let media = 0;
+            for (let i = 0; i < notas.length; i++) {
+                media += notas[i];
+            }
+            aluno.media = media / notas.length;  
+
+            mostrarDados(aluno);
+        }
+    </script>
+</body>
+</html>
