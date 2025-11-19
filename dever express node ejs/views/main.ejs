@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquete - Cores Favoritas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: normal;
+            color: #666;
+        }
+        
+        .cores-container {
+            margin: 20px 0;
+        }
+        
+        .cor-btn {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid;
+            background-color: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .vermelho {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+        
+        .vermelho.selecionado {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .azul {
+            border-color: #007bff;
+            color: #007bff;
+        }
+        
+        .azul.selecionado {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .verde {
+            border-color: #28a745;
+            color: #28a745;
+        }
+        
+        .verde.selecionado {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .submit-btn:enabled {
+            background-color: #28a745;
+        }
+        
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .results-btn {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            border: 1px solid #6c757d;
+            color: #6c757d;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Votação - Cores Favoritas</h1>
+        <h2>Escolha sua cor favorita</h2>
+        
+        <form action="/votar" method="post">
+            <div class="cores-container">
+                <button type="button" class="cor-btn vermelho" onclick="selecionarCor('vermelho', this)">
+                    Vermelho
+                </button>
+                <button type="button" class="cor-btn azul" onclick="selecionarCor('azul', this)">
+                    Azul
+                </button>
+                <button type="button" class="cor-btn verde" onclick="selecionarCor('verde', this)">
+                    Verde
+                </button>
+            </div>
+            
+            <input type="hidden" name="voto" id="votoInput">
+            
+            <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                Enviar Voto
+            </button>
+        </form>
+        
+        <a href="/resultado" class="results-btn">
+            Ver Resultados da Enquete
+        </a>
+    </div>
+
+    <script>
+        function selecionarCor(cor, botao) {
+            const botoes = document.querySelectorAll('.cor-btn');
+            botoes.forEach(b => b.classList.remove('selecionado'));
+
+            botao.classList.add('selecionado');
+            document.getElementById('votoInput').value = cor;
+            document.getElementById('submitBtn').disabled = false;
+        }
+    </script>
+</body>
+</html>

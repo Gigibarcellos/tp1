@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Enquete</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .total-votos {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #666;
+        }
+        
+        .resultado {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid;
+        }
+        
+        .vermelho {
+            border-color: #dc3545;
+        }
+        
+        .azul {
+            border-color: #007bff;
+        }
+        
+        .verde {
+            border-color: #28a745;
+        }
+        
+        .materia-titulo {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .barra-container {
+            height: 30px;
+            background-color: #f8f9fa;
+            margin: 10px 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .barra {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .vermelho .barra {
+            background-color: #dc3545;
+        }
+        
+        .azul .barra {
+            background-color: #007bff;
+        }
+        
+        .verde .barra {
+            background-color: #28a745;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        
+        .voltar-btn {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            border: 1px solid #6c757d;
+            color: #6c757d;
+            text-decoration: none;
+            margin-top: 25px;
+        }
+        
+        .vencedor {
+            background-color: #fff9e6;
+            border-width: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultados da Enquete</h1>
+        <p class="total-votos">Total de votos: <strong><%= totalVotos %></strong></p>
+        
+        <div class="resultado vermelho <%= votos.vermelho >= Math.max(votos.azul, votos.verde) && votos.vermelho > 0 ? 'vencedor' : '' %>">
+            <h3 class="materia-titulo">Vermelho</h3>
+            <div class="barra-container">
+                <div class="barra" style="width: <%= totalVotos > 0 ? (votos.vermelho / totalVotos * 100) : 0 %>%;">
+                    <%= totalVotos > 0 ? ((votos.vermelho / totalVotos * 100).toFixed(1)) : 0 %>%
+                </div>
+            </div>
+            <div class="stats">
+                <span><%= votos.vermelho %> votos</span>
+                <span><%= totalVotos > 0 ? ((votos.vermelho / totalVotos * 100).toFixed(1)) : 0 %>%</span>
+            </div>
+        </div>
+        
+        <div class="resultado azul <%= votos.azul >= Math.max(votos.vermelho, votos.verde) && votos.azul > 0 ? 'vencedor' : '' %>">
+            <h3 class="materia-titulo">Azul</h3>
+            <div class="barra-container">
+                <div class="barra" style="width: <%= totalVotos > 0 ? (votos.azul / totalVotos * 100) : 0 %>%;">
+                    <%= totalVotos > 0 ? ((votos.azul / totalVotos * 100).toFixed(1)) : 0 %>%
+                </div>
+            </div>
+            <div class="stats">
+                <span><%= votos.azul %> votos</span>
+                <span><%= totalVotos > 0 ? ((votos.azul / totalVotos * 100).toFixed(1)) : 0 %>%</span>
+            </div>
+        </div>
+        
+        <div class="resultado verde <%= votos.verde >= Math.max(votos.vermelho, votos.azul) && votos.verde > 0 ? 'vencedor' : '' %>">
+            <h3 class="materia-titulo">Verde</h3>
+            <div class="barra-container">
+                <div class="barra" style="width: <%= totalVotos > 0 ? (votos.verde / totalVotos * 100) : 0 %>%;">
+                    <%= totalVotos > 0 ? ((votos.verde / totalVotos * 100).toFixed(1)) : 0 %>%
+                </div>
+            </div>
+            <div class="stats">
+                <span><%= votos.verde %> votos</span>
+                <span><%= totalVotos > 0 ? ((votos.verde / totalVotos * 100).toFixed(1)) : 0 %>%</span>
+            </div>
+        </div>
+        
+        <a href="/" class="voltar-btn">Voltar para Votação</a>
+    </div>
+</body>
+</html>
