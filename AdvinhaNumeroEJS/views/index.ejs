@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input, button{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="geranumero" style="display: block; margin-bottom: 10px;">
+        <form action="/geranumero" method="post">
+            <h1>Advinha Número</h1>
+            <button type="submit">Gerar Número</button>
+        </form>
+    </div>
+    <div>
+        <form action="/chute" method="post">
+            <h1>Digite um número de 1 a 100</h1>
+            <input type="number" id="chute" name="chute">
+            <button type="submit">Advinhar</button>
+        </form>
+    </div>
+    <% if (mensagem) { %>
+        <div id="mensagem"> <%=mensagem%> </div>
+    <% } %>
+</body>
+</html>
