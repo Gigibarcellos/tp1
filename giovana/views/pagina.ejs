@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>Diga Olá</title>
+    <script>
+    </script>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            /* Sets a 1-pixel solid black border on all elements */
+        }
+    </style>
+</head>
+
+<body onload="javascript:console.log('Página carregada.')">
+    <h1>Criando um formulário no HTML</h1>
+    <form action="/ola" method="post">
+        Nome:
+        <input type="text" name="nomezim" id="nomezim" placeholder="Nome" value="Teste">
+        <br>
+        Idade:
+        <input type="number" name="idade" id="idade" min="0">
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+    <% if (typeof fala=='undefined' ) { %>
+        <p id="resultado">Olá?</p>
+        <% } else { %>
+            <p id="resultado">
+                <%=fala%>
+            </p>
+            <% } %>
+
+                <table>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Ações</th>
+                    </tr>
+
+                    <% for (let i=0; i < pessoas.length; i++) { %>
+                        <tr>
+                            <td>
+                                <%= pessoas[i].nome %>
+                            </td>
+                            <td>
+                                <%= pessoas[i].idade %>
+                            </td>
+                            <td>    
+                                <a href="/deletar?id=<%= i %>">Deletar</a>
+                            </td>
+                        </tr>
+                        <% } %>
+
+                </table>
+
+                <a href="/lista">Lista de quem já falou "olá" por aqui...</a>
+</body>
+
+</html>
